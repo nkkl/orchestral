@@ -24,31 +24,17 @@ class MusiciansController < ApplicationController
   # POST /musicians
   # POST /musicians.json
   def create
-    @musician = Musician.new(musician_params)
-
-    respond_to do |format|
-      if @musician.save
-        format.html { redirect_to @musician, notice: 'Musician was successfully created.' }
-        format.json { render :show, status: :created, location: @musician }
-      else
-        format.html { render :new }
-        format.json { render json: @musician.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /musicians/1
   # PATCH/PUT /musicians/1.json
   def update
-    respond_to do |format|
-      if @musician.update(musician_params)
-        format.html { redirect_to @musician, notice: 'Musician was successfully updated.' }
-        format.json { render :show, status: :ok, location: @musician }
-      else
-        format.html { render :edit }
-        format.json { render json: @musician.errors, status: :unprocessable_entity }
-      end
-    end
+    # find our musician
+    @musician = Musician.find(params[:id])
+
+    # set the status to true
+    @musican.update_attributes(:status => true)
+    @musician.save
   end
 
   # DELETE /musicians/1

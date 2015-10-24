@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Instrument</th>
-      <th>Status</th>
+      <th>Sponsored?</th>
       <th>Sponsor</th>
       <th colspan="3"></th>
     </tr>
@@ -16,6 +16,7 @@
         <td><%= musician.instrument %></td>
         <td><%= musician.status %></td>
         <td><%= musician.sponsor %></td>
+        <td><button id="<%= musician.id %>">Change sponsorship!</button></td>
 <!--         <td><%= link_to 'Show', musician %></td>
         <td><%= link_to 'Edit', edit_musician_path(musician) %></td>
         <td><%= link_to 'Destroy', musician, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
@@ -27,3 +28,16 @@
 <br>
 
 <!-- <%= link_to 'New Musician', new_musician_path %> -->
+
+<script type="text/javascript">
+  $('button').click(function() {
+    var id = this.id;
+    
+    $.ajax("<%= musicians_url %>/" + id, {
+        type: "PUT",
+        data: { "id": id,
+            "status": true }
+      }).done(function() {});
+
+  })
+</script>

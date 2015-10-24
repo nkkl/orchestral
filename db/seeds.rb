@@ -13,6 +13,6 @@ musician_list = [
 ]
 
 musician_list.each do |name, quantity|
-	quantity.times do Musician.create(instrument: name)
+	quantity.times do Musician.create(instrument: name, status: false)
 	end
 end
