@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+musician_list = [
+	['violin', 4],
+	['viola', 3],
+	['trombone', 1]
+]
+
+musician_list.each do |name, quantity|
+	quantity.times do Musician.create(instrument: name)
+	end
+end

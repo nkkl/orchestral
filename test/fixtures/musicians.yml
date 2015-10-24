@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instrument: MyString
+  status: false
+  sponsor: MyString
+
+two:
+  instrument: MyString
+  status: false
+  sponsor: MyString
