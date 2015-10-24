@@ -33,8 +33,12 @@ class MusiciansController < ApplicationController
     @musician = Musician.find(params[:id])
 
     # set the status to true
-    @musican.update_attributes(:status => true)
+    @musician.update_attributes(:status => true)
     @musician.save
+
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
   end
 
   # DELETE /musicians/1
