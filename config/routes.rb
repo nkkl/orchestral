@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'musicians#index'
 
+  get '/client_token' => 'musicians#client_token'
+
+  post '/checkout' => 'musicians#checkout'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

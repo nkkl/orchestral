@@ -51,6 +51,36 @@ class MusiciansController < ApplicationController
     end
   end
 
+  def client_token
+    Braintree::ClientToken.generate
+  end
+
+  def checkout
+    # do the money thing
+    @nonce = params[:payment_method_nonce]
+
+    @result = Braintree::Transaction.sale(
+      :amount => "50.00",
+      :payment_method_nonce => @nonce
+      )
+
+    if @result.success?
+      # find our musician
+      @musician = Musician.find(params[:id])
+
+      # set the status to true
+      @musician.update_attributes(:status => true)
+      @musician.save
+
+      redirect_to root_url
+    else
+      flash[:alert] = "something went wrong"
+
+      redirect_to root_url
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_musician
