@@ -74,8 +74,6 @@ class MusiciansController < ApplicationController
 
       redirect_to root_url
     else
-      flash[:alert] = "something went wrong"
-
       redirect_to root_url
     end
 
