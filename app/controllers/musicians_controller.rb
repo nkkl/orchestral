@@ -5,6 +5,9 @@ class MusiciansController < ApplicationController
   # GET /musicians.json
   def index
     @musicians = Musician.all
+
+    @client_token = Braintree::ClientToken.generate
+    puts @client_token
   end
 
   # GET /musicians/1
@@ -51,20 +54,16 @@ class MusiciansController < ApplicationController
     end
   end
 
-  def client_token
-    Braintree::ClientToken.generate
-  end
-
   def checkout
     # do the money thing
-    @nonce = params[:payment_method_nonce]
+    nonce = params[:payment_method_nonce]
 
-    @result = Braintree::Transaction.sale(
+    result = Braintree::Transaction.sale(
       :amount => "50.00",
-      :payment_method_nonce => @nonce
+      :payment_method_nonce => nonce
       )
 
-    if @result.success?
+    if result.success?
       # find our musician
       @musician = Musician.find(params[:id])
 
@@ -72,11 +71,17 @@ class MusiciansController < ApplicationController
       @musician.update_attributes(:status => true)
       @musician.save
 
-      redirect_to root_url
+      redirect_to root_url, :notice => 'success'
     else
-      redirect_to root_url
-    end
+      result.errors.each do |error|
+        puts error.attribute
+        puts error.code
+        puts error.message
+      end
 
+      redirect_to root_url
+
+    end
   end
 
   private
