@@ -6,8 +6,8 @@ class MusiciansController < ApplicationController
   def index
     @musicians = Musician.all
 
+    # generate client token, to be grabbed by js in UI
     @client_token = Braintree::ClientToken.generate
-    puts @client_token
   end
 
   # GET /musicians/1
