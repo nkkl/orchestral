@@ -1,3 +1,70 @@
 // Place all the styles related to the Musicians controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$font: sans-serif;
+$primary-color: #4455BB;
+$secondary-color: #334455;
+$contrast-color: white;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@media (max-width: 600px) {
+	body {
+		padding: 1em;
+	}
+}
+
+@media (min-width: 601px) {
+	body {
+		position: relative;
+	}
+
+	#checkout {
+		display: none;
+
+		width: 20em;
+		margin: 1em;
+
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		margin-left: -10em;
+
+		border: 1px solid #CCC;
+		background-color: white;
+
+		z-index: 1;
+
+		.close-button {
+			font-size: 24pt;
+			margin: 5px -5px;
+
+			width: 100%;
+			text-align: right;
+
+			&:hover {
+				cursor: pointer;
+				color: red;
+			}
+		}
+
+		#checkout-form {
+			margin: 1em;
+
+			button {
+				padding: 1em 0;
+				width: 100%;
+
+				background-color: $primary-color;
+				color: $contrast-color;
+				border: none;
+
+				cursor: pointer;
+			}
+		}
+	}
+}

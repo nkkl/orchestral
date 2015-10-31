@@ -2,6 +2,10 @@
 
 <h1>These are the musicians in this orchestra</h1>
 
+<%= content_tag "div", id: "musicians", data: {url: root_url} do %>
+  Musicians div
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -18,33 +22,55 @@
         <td><%= musician.instrument %></td>
         <td><%= musician.status %></td>
         <td><%= musician.sponsor %></td>
-        <td>
         <% if musician.status != true %>
-          <form id="checkout" method="post" action="/checkout">
-            <div id="payment-form"></div>
-            <input type="submit" value="Sponsor this musician">
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <%= hidden_field_tag :id, musician.id %>
-          </form>
+          <td class="<%= musician.id %>"><button class="sponsor">sponsor</button></td>
         <% end %>
-        </td>
-<!--         <td><%= link_to 'Show', musician %></td>
-        <td><%= link_to 'Edit', edit_musician_path(musician) %></td>
-        <td><%= link_to 'Destroy', musician, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<div id="checkout">
+  <div class="close-button">&times;</div>
+
+  <form id="checkout-form" method="post" action="/checkout">
+    <div id="payment-form"></div>
+    <button type="submit">Donate $50</button>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" id="id-field" name="id" value="">
+  </form>
+</div>
+
 <br>
 
-<!-- <%= link_to 'New Musician', new_musician_path %> -->
-<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 
+<script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script type="text/javascript">
 
   // fetches client token from server
   braintree.setup('<%= @client_token %>', "dropin", {
     container: "payment-form"
+  });
+
+  var musicians = $.getJSON( $('#orchestra').data('url' + '.json'), function() { 
+    renderMusicians(musicians.responseJSON);
+  });
+
+  var renderMusicians = function(data) {
+    console.log(data);
+  }
+
+  // bind clicks to toggle payment modal
+  $('.sponsor').click( function() {
+    $('#checkout').show();
+    
+    // add id to form to send 
+    var id =  $($(this).parent()[0]).attr('class');
+    $('#id-field').val(id);
+
+  });
+  $('#checkout .close-button').click(function() {
+    $('#checkout').hide();
   });
 </script>

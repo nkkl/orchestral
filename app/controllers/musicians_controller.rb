@@ -8,6 +8,12 @@ class MusiciansController < ApplicationController
 
     # generate client token, to be grabbed by js in UI
     @client_token = Braintree::ClientToken.generate
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @musicians }
+      format.json {render :json=>@musicians}
+    end
   end
 
   # GET /musicians/1
