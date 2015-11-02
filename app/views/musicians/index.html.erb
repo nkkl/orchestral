@@ -2,8 +2,8 @@
 
 <h1>These are the musicians in this orchestra</h1>
 
-<%= content_tag "div", id: "musicians", data: {url: root_url} do %>
-  Musicians div
+<%= content_tag "div", id: "orchestra", data: {url: root_url} do %>
+  <canvas id="orchestracanvas"></canvas>
 <% end %>
 
 <table>
@@ -48,6 +48,7 @@
 
 <br>
 
+<div id="lightbox"></div>
 
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 <script type="text/javascript">
@@ -62,20 +63,23 @@
     renderMusicians(musicians.responseJSON);
   });
 
-  var renderMusicians = function(data) {
-    console.log(data);
-  }
-
-  // bind clicks to toggle payment modal
+  // bind clicks to open payment modal
   $('.sponsor').click( function() {
     $('#checkout').show();
-    
-    // add id to form to send 
+
+    // block interaction on the rest of the screen
+    $('#lightbox').show();
+    $('html, body').css('overflow', 'hidden');
+
+    // add id to form so that we can update the correct musician in the database 
     var id =  $($(this).parent()[0]).attr('class');
     $('#id-field').val(id);
-
   });
+
+  // bind clicks to close payment modal
   $('#checkout .close-button').click(function() {
-    $('#checkout').hide();
+      $('#lightbox').hide();
+      $('html, body').css('overflow', 'auto');
+      $('#checkout').hide();
   });
 </script>
