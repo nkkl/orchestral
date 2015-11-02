@@ -66,5 +66,20 @@ $contrast-color: white;
 				cursor: pointer;
 			}
 		}
+
+		#details {
+			margin: 1em;
+
+			input {
+				margin-top: 1em;
+				font-size: 16px;
+
+				border: none;
+				outline: none;
+				border-bottom: 1px solid black;
+
+				padding-bottom: 4px;
+			}
+		}
 	}
 }

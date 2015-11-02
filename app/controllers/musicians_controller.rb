@@ -75,9 +75,15 @@ class MusiciansController < ApplicationController
 
       # set the status to true
       @musician.update_attributes(:status => true)
+      if params[:donorname]
+        @musician.update_attributes(:sponsor => params[:donorname])
+      end
       @musician.save
 
-      redirect_to root_url, :notice => 'success'
+      # send an email notifying of the donation
+      DonationMailer.new_donor(params[:donoremail])
+
+      redirect_to root_url
     else
       result.errors.each do |error|
         puts error.attribute

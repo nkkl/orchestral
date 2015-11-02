@@ -35,6 +35,10 @@
   <div class="close-button">&times;</div>
 
   <form id="checkout-form" method="post" action="/checkout">
+    <div id="details">
+      <input type="text" name="donorname" placeholder="name">
+      <input type="email" name="donoremail" placeholder="email address" required> 
+    </div>
     <div id="payment-form"></div>
     <button type="submit">Donate $50</button>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -52,6 +56,7 @@
   braintree.setup('<%= @client_token %>', "dropin", {
     container: "payment-form"
   });
+
 
   var musicians = $.getJSON( $('#orchestra').data('url' + '.json'), function() { 
     renderMusicians(musicians.responseJSON);
