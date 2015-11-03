@@ -2,7 +2,9 @@
 
 <h1>These are the musicians in this orchestra</h1>
 
-<%= content_tag "div", id: "orchestra", data: {url: root_url} do %><% end %>
+<%= content_tag "div", id: "orchestra", data: {url: root_url} do %>
+  <div class="popup"></div>
+<% end %>
 
 <table>
   <thead>
@@ -63,15 +65,9 @@
 
   // bind clicks to open payment modal
   $('.sponsor').click( function() {
-    $('#checkout').show();
-
-    // block interaction on the rest of the screen
-    $('#lightbox').show();
-    $('html, body').css('overflow', 'hidden');
-
-    // add id to form so that we can update the correct musician in the database 
     var id =  $($(this).parent()[0]).attr('class');
-    $('#id-field').val(id);
+
+    launchPayments(id);
   });
 
   // bind clicks to close payment modal
