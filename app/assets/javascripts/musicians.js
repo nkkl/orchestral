@@ -18,34 +18,53 @@ var launchPayments = function(data, id) {
 }
 
 var renderMusicians = function(data) {
-	console.log(data);
-
 	// draw orchestra on canvas
 	var paper = Raphael('orchestra', 800, 500);
 
+	// initialize basic variables
+	// c, x, y are for SVG elements
 	var c, x, y;
-	var status;
 	for (i=0; i < seatingchart.length; i++) {
 
 		x = seatingchart[i][0];
 		y= seatingchart[i][1];
 
-		c = paper.circle(x,y,10).attr({ fill: 'black' });
-		c[0].id = 'seat-' + (i+1);
+		// create new SVG element (circle) for each seat in the orchestra
+		if (data[i]) {
+			// if the seat is not sponsored, highlight it so that it can be sponsored
+			if (data[i].status == false) {
+				c = paper.circle(x,y,10).attr({ fill: 'green', stroke: 'none' });
 
-		c.hover(function() {
-			this.attr({ r: 20, fill: 'blue' });
-			showMusiciansPopup(data, this[0].id);
-		});
+				// bind a unique identifier to each SVG element
+				// this avoids issues with closures
+				c[0].id = 'seat-' + (i+1);
 
-		c.mouseout(function() {
-			this.attr({ r: 10, fill: 'black' });
-			hideMusiciansPopup();
-		});
+				// if a student can be sponsored, launch payments modal when element is clicked
+				c.click(function() {
+					launchPayments(data, this[0].id);
+				});
+			} else {
+				c = paper.circle(x,y,10).attr({ fill: 'black', stroke: 'none' });
+				c[0].id = 'seat-' + (i+1);
+			}
 
-		c.click(function() {
-			launchPayments(data, this[0].id);
-		})
+			// bind hover functionality to each SVG element
+			// on hover, enlarge the SVG element and display a popup
+			c.hover(function() {
+				this.attr({ r: 20 });
+				showMusiciansPopup(data, this[0].id);
+			});
+
+			// when hover ends, restore the original size and hide the popup
+			c.mouseout(function() {
+				this.attr({ r: 10 });
+				hideMusiciansPopup();
+			});
+		} else {
+			c = paper.circle(x,y,10).attr({ fill: 'black', stroke: 'none' });
+		}
+		
+
 	}
 }
 
@@ -53,7 +72,9 @@ var showMusiciansPopup = function(data, id) {
 	var svg = $('svg');
 	var popup = $('#orchestra .popup');
 
-	var index = parseInt( id.replace('seat-','') );
+	// look up index based on element id
+	// rails indexes at 1, so we have to offset by 1
+	var index = parseInt( id.replace('seat-','') ) - 1;
 
 	var instrument = data[index].instrument;
 	var status = data[index].status;
@@ -61,6 +82,7 @@ var showMusiciansPopup = function(data, id) {
 
 	var string = '<h3>' + instrument + '</h3>';
 
+	// generate text explaining the sponsorship status of the musician
 	if (status == true) {
 		if (sponsor) {
 			string += ('sponsored by ' + sponsor);
@@ -76,9 +98,14 @@ var showMusiciansPopup = function(data, id) {
 	var element = document.getElementById(id);
 	var height = popup.height();
 
+	// find the absolute coordinates of the hovered element
+	// then offset by half the width to center horizontally
+	// and the entire height to display above the hovered element
+	// then shift by the height of the element plus a little padding
 	var x = svg.offset().left + element.cx.animVal.value - 50;
 	var y = svg.offset().top + element.cy.animVal.value - height - 45;
 
+	// move the popup into view
 	popup.css({'left': x, 'top': y});
 }
 
