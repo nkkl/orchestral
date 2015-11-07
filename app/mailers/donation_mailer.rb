@@ -3,7 +3,11 @@ class DonationMailer < ActionMailer::Base
 
   def new_donor(donor_email)
   	@donor = donor_email
-	mail(:to => 'nikki@nicoleblee.com',
-		:subject => 'New donation')	
+	
+	Mail.deliver do
+		to 'nikki@nicoleblee.com'
+		from 'donationbot@orchestral.com'
+		subject 'testing send mail'
+	end
   end
 end
