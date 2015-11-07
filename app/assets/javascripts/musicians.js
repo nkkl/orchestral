@@ -41,7 +41,6 @@ var renderMusicians = function(data) {
 
 				// if a student can be sponsored, launch payments modal when element is clicked
 				c.click(function() {
-					console.log('clicked');
 					launchPayments(data, this[0].id);
 				});
 			} else {
