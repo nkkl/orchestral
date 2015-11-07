@@ -12,7 +12,7 @@ var launchPayments = function(data, id) {
 	    $('html, body').css('overflow', 'hidden');
 
 	    // add id to form so that we can update the correct musician in the database 
-	    $('#id-field').val(id);
+	    $('#id-field').val(index);
 	}
 
 }
