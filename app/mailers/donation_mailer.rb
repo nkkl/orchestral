@@ -8,7 +8,7 @@ class DonationMailer < ActionMailer::Base
 		to 'nikki@nicoleblee.com'
 		from 'donationbot@orchestral.com'
 		subject 'testing send mail'
-		body 'A new donation was made! The donor can be reached at #{@donor}.'
+		body "A new donation was made! The donor can be reached at #{@donor}."
 	end
   end
 end
