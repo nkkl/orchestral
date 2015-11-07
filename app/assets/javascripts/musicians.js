@@ -40,7 +40,7 @@ var renderMusicians = function(data) {
 				c[0].id = 'seat-' + (i+1);
 
 				// if a student can be sponsored, launch payments modal when element is clicked
-				c[0].click(function() {
+				c.click(function() {
 					console.log('clicked');
 					launchPayments(data, this[0].id);
 				});
