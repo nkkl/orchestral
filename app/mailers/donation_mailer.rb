@@ -12,7 +12,7 @@ class DonationMailer < ActionMailer::Base
 		to 'nikki@nicoleblee.com'
 		from 'donationbot@orchestral.com'
 		subject 'New donation alert'
-		body "A new donation was made! The donor, #{donor_name}, can be reached at #{donor_email}. #{details}."
+		body "A new donation was made! The donor, #{donor_name}, can be reached at #{donor_email}. #{details}"
 	end
   end
 end
