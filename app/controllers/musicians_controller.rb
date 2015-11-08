@@ -83,7 +83,7 @@ class MusiciansController < ApplicationController
       @musician.save
 
       # send an email notifying of the donation
-      DonationMailer.new_donor(params[:donoremail],params[:donorname])
+      DonationMailer.new_donor(params[:donoremail],params[:donorname],params[:include])
 
       redirect_to root_url
     else
