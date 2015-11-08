@@ -12,7 +12,8 @@ var launchPayments = function(data, id) {
 	    $('html, body').css('overflow', 'hidden');
 
 	    // add id to form so that we can update the correct musician in the database 
-	    $('#id-field').val(index);
+	    // offset by one because JavaScript indexes at 0 and Rails indexes at 1
+	    $('#id-field').val(index + 1);
 	}
 
 }
@@ -37,7 +38,7 @@ var renderMusicians = function(data) {
 
 				// bind a unique identifier to each SVG element
 				// this avoids issues with closures
-				c[0].id = 'seat-' + (i+1);
+				c[0].id = 'seat-' + i;
 
 				// if a student can be sponsored, launch payments modal when element is clicked
 				c.click(function() {
@@ -45,10 +46,10 @@ var renderMusicians = function(data) {
 				});
 			} else if (data[i].student == true && data[i].status == true) {
 				c = paper.circle(x,y,15).attr({ fill: 'rgb(100,100,100)', stroke: 'none' });
-				c[0].id = 'seat-' + (i+1);
+				c[0].id = 'seat-' + i;
 			} else {
 				c = paper.circle(x,y,15).attr({ fill: 'black', stroke: 'none' });
-				c[0].id = 'seat-' + (i+1);
+				c[0].id = 'seat-' + i;
 			}
 
 			// bind hover functionality to each SVG element
@@ -76,8 +77,7 @@ var showMusiciansPopup = function(data, id) {
 	var popup = $('#orchestra .popup');
 
 	// look up index based on element id
-	// rails indexes at 1, so we have to offset by 1
-	var index = parseInt( id.replace('seat-','') ) - 1;
+	var index = parseInt( id.replace('seat-','') );
 
 	var instrument = data[index].instrument;
 	var status = data[index].status;
