@@ -4,6 +4,7 @@ class CreateMusicians < ActiveRecord::Migration
       t.string :instrument
       t.boolean :status
       t.string :sponsor
+      t.boolean :student
 
       t.timestamps
     end

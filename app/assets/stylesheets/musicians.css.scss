@@ -12,13 +12,13 @@ $contrast-color: white;
 	padding: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 991px) {
 	body {
 		padding: 1em;
 	}
 }
 
-@media (min-width: 601px) {
+@media (min-width: 992px) {
 	body {
 		position: relative;
 	}
@@ -28,7 +28,7 @@ $contrast-color: white;
 		svg {
 			display: block;
 
-			width: 900px;
+			width: 992px;
 			height: 500px;
 
 			margin: 1em auto;
@@ -50,7 +50,7 @@ $contrast-color: white;
 			background-color: rgba(0,0,0,.8);
 			color: white;
 
-			z-index: 0;
+			z-index: 2;
 		}
 	}
 

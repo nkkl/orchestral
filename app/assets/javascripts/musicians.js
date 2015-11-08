@@ -31,9 +31,9 @@ var renderMusicians = function(data) {
 
 		// create new SVG element (circle) for each seat in the orchestra
 		if (data[i]) {
-			// if the seat is not sponsored, highlight it so that it can be sponsored
-			if (data[i].status == false) {
-				c = paper.circle(x,y,10).attr({ fill: 'green', stroke: 'none' });
+			// if the seat is for a student AND not sponsored, highlight it so that it can be sponsored
+			if (data[i].student == true && data[i].status == false) {
+				c = paper.circle(x,y,15).attr({ fill: 'green', stroke: 'none' });
 
 				// bind a unique identifier to each SVG element
 				// this avoids issues with closures
@@ -43,8 +43,11 @@ var renderMusicians = function(data) {
 				c.click(function() {
 					launchPayments(data, this[0].id);
 				});
+			} else if (data[i].student == true && data[i].status == true) {
+				c = paper.circle(x,y,15).attr({ fill: 'rgb(100,100,100)', stroke: 'none' });
+				c[0].id = 'seat-' + (i+1);
 			} else {
-				c = paper.circle(x,y,10).attr({ fill: 'black', stroke: 'none' });
+				c = paper.circle(x,y,15).attr({ fill: 'black', stroke: 'none' });
 				c[0].id = 'seat-' + (i+1);
 			}
 
@@ -57,11 +60,11 @@ var renderMusicians = function(data) {
 
 			// when hover ends, restore the original size and hide the popup
 			c.mouseout(function() {
-				this.attr({ r: 10 });
+				this.attr({ r: 15 });
 				hideMusiciansPopup();
 			});
 		} else {
-			c = paper.circle(x,y,10).attr({ fill: 'black', stroke: 'none' });
+			c = paper.circle(x,y,15).attr({ fill: 'black', stroke: 'none' });
 		}
 		
 
@@ -78,18 +81,19 @@ var showMusiciansPopup = function(data, id) {
 
 	var instrument = data[index].instrument;
 	var status = data[index].status;
+	var student = data[index].student;
 	var sponsor = data[index].sponsor;
 
 	var string = '<h3>' + instrument + '</h3>';
 
 	// generate text explaining the sponsorship status of the musician
-	if (status == true) {
+	if (student == true && status == true) {
 		if (sponsor) {
 			string += ('sponsored by ' + sponsor);
 		} else {
 			string += 'sponsored by an anonymous donor';
 		}
-	} else {
+	} else if (student == true && status == false) {
 		string += 'click to sponsor';
 	}
 

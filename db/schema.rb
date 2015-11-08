@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20151024021630) do
     t.string   "instrument"
     t.boolean  "status"
     t.string   "sponsor"
+    t.boolean  "student"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
