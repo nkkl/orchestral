@@ -75,13 +75,15 @@ class MusiciansController < ApplicationController
 
       # set the status to true
       @musician.update_attributes(:status => true)
-      if params[:donorname]
+
+      # if the donor has opted in, save their name to display on the map
+      if params[:donorname] && params[:include]
         @musician.update_attributes(:sponsor => params[:donorname])
       end
       @musician.save
 
       # send an email notifying of the donation
-      DonationMailer.new_donor(params[:donoremail])
+      DonationMailer.new_donor(params[:donoremail],params[:donorname])
 
       redirect_to root_url
     else

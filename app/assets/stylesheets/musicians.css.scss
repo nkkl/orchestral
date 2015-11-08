@@ -58,13 +58,13 @@ $contrast-color: white;
 	#checkout {
 		display: none;
 
-		width: 20em;
+		width: 300px;
 		margin: 1em;
 
 		position: fixed;
 		top: 10%;
 		left: 50%;
-		margin-left: -10em;
+		margin-left: -150px;
 
 		border: 1px solid #CCC;
 		background-color: white;
@@ -96,13 +96,19 @@ $contrast-color: white;
 				border: none;
 
 				cursor: pointer;
+
+				&:hover {
+					background-color: $secondary-color;
+				}
 			}
 		}
 
 		#details {
 			margin: 1em;
 
-			input {
+			input[type="email"], input[type="text"] {
+				width: 100%;
+
 				margin-top: 1em;
 				font-size: 16px;
 
@@ -111,6 +117,15 @@ $contrast-color: white;
 				border-bottom: 1px solid black;
 
 				padding-bottom: 4px;
+			}
+
+			input[type="checkbox"] {
+				margin-top: 1em;
+				vertical-align: text-bottom;
+			}
+
+			label {
+				font-size: 12px;
 			}
 		}
 		}

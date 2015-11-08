@@ -37,7 +37,9 @@
   <form id="checkout-form" method="post" action="/checkout">
     <div id="details">
       <input type="text" name="donorname" placeholder="name">
-      <input type="email" name="donoremail" placeholder="email address" required> 
+      <input type="email" name="donoremail" placeholder="email address" required>
+      <input type="checkbox" name="include">
+      <label for="include">Show my name in the list of donors</label>
     </div>
     <div id="payment-form"></div>
     <button type="submit">Donate $50</button>
