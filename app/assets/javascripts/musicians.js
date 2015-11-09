@@ -16,7 +16,6 @@ var launchPayments = function(data, id) {
 
 	    // block interaction on the rest of the screen
 	    $('#lightbox').show();
-	    $('html, body').css('overflow', 'hidden');
 
 	    // add id to form so that we can update the correct musician in the database 
 	    // offset by one because JavaScript indexes at 0 and Rails indexes at 1
@@ -55,7 +54,7 @@ var renderMusicians = function(data) {
 	} else {
 		counterString = 'The concert is already over';
 	}
-	
+
 	$('.counter #days').text(counterString);
 
 	// initialize basic variables
