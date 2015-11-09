@@ -9,7 +9,7 @@ class DonationMailer < ActionMailer::Base
   	end
 
 	Mail.deliver do
-		to 'nikki@nicoleblee.com'
+		to ENV['MAIL_RECIPIENT']
 		from 'donationbot@orchestral.com'
 		subject 'New donation alert'
 		body "A new donation was made! The donor, #{donor_name}, can be reached at #{donor_email}. #{details}"
