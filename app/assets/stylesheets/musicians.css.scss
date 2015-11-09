@@ -22,6 +22,16 @@ $contrast-color: white;
 	}
 }
 
+a.link {
+	background-color: none;
+	color: $secondary-color;
+
+	&:hover, &:active {
+		color: $primary-color;
+		background-color: inherit;
+	}
+}
+
 @media (max-width: 991px) {
 	body {
 		padding: 1em;
@@ -65,8 +75,8 @@ $contrast-color: white;
 		}
 
 		.counter {
-			height: 100px;
-			width: 100px;
+			height: 150px;
+			width: 200px;
 
 			border: 1px solid red;
 
@@ -227,5 +237,26 @@ $contrast-color: white;
 		width: 100%;
 
 		z-index: 5;
+	}
+
+	#footer {
+		background-color: #EEE;
+		overflow: hidden;
+
+		.text {
+			width: 992px;
+			margin: 2em auto;
+
+			h3 {
+				font-size: 12pt;
+				font-weight: 300;
+			}
+
+			p {
+				margin-top: 2pt;
+				font-size: 10pt;
+				color: #888;
+			}
+		}
 	}
 }
