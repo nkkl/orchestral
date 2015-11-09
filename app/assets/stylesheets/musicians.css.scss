@@ -43,6 +43,45 @@ a.link {
 		position: relative;
 	}
 
+	.notice {
+		width: 300px;
+		padding: 10px;
+
+		position: absolute;
+		left: 50%;
+		top: 30%;
+		margin-left: -150px;
+
+		background-color: white;
+		color: $secondary-color;
+		border: 1px solid #CCC;
+
+		z-index: 10;
+
+		h3 {
+			font-size: 16pt;
+			font-weight: 300;
+			line-height: 100%;
+
+			margin: 1em .25em .25em .25em;
+		}
+	}
+
+	.close-button {
+		font-size: 24pt;
+		margin-top: -5px;
+		margin-right: 5px;
+
+		display: inline-block;
+		float: right;
+		color: black;
+
+		&:hover {
+			cursor: pointer;
+			color: $secondary-color;
+		}
+	}
+
 	#header {
 		width: 100%;
 		overflow: hidden;
@@ -93,7 +132,7 @@ a.link {
 	/* orchestra */
 	#orchestra {
 		min-height: 500px;
-		
+
 		svg {
 			display: block;
 
@@ -147,19 +186,6 @@ a.link {
 
 		z-index: 10;
 
-		.close-button {
-			font-size: 24pt;
-			margin-top: -5px;
-			margin-right: 5px;
-
-			display: inline-block;
-			float: right;
-
-			&:hover {
-				cursor: pointer;
-				color: $secondary-color;
-			}
-		}
 
 		.information {
 			margin-left: 1em;

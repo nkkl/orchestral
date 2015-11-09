@@ -85,6 +85,7 @@ class MusiciansController < ApplicationController
       # send an email notifying of the donation
       DonationMailer.new_donor(params[:donoremail],params[:donorname],params[:include])
 
+      flash[:notice] = "Thanks for donating! Look for a concert ticket in your inbox – see you on the 18th!"
       redirect_to root_url
     else
       result.errors.each do |error|
@@ -93,8 +94,9 @@ class MusiciansController < ApplicationController
         puts error.message
       end
 
-      redirect_to root_url
+      flash[:notice] = "Sorry, something went wrong! Please try again."
 
+      redirect_to root_url
     end
   end
 

@@ -1,12 +1,18 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="notice">
+    <div class="close-button">&times;</div>
+
+    <h3><%= flash[:notice] %></h3>
+  </div>
+<% end %>
 
 <div id="header">
   <div class="wrapper">
-    <h1>SCO: Sponsor a Seat</h1>
+    <h1>SCO: Sponsor a Musician</h1>
 
     <p>On November 18, we will be presenting you with an innovative concert. Our orchestra is inter-generational, a collaboration between Seattle-area high school and college students, volunteers from the community, and professionals from premier ensembles like the Seattle Symphony.</p>
 
-    <p>We are asking you, our community, to help take part in this event. For $50, you can sponsor a student or volunteer musician, and get a complimentary ticket to our concert. Here's the twist. If all musicians are sponsored by the day of the concert, the money will go to the musicians. If not, the money will go to the orchestra's general fund. Either way, you will be supporting our exciting musical collaboration. Find a musician on the stage map below, and click to sponsor!</p>
+    <p>We are asking you, our community, to help take part in this event. For &#36;50, you can sponsor a student or volunteer musician, and get a complimentary ticket to our concert. Here&apos;s the twist. If all musicians are sponsored by the day of the concert, the money will go to the musicians. If not, the money will go to the orchestra&apos;s general fund. Either way, you will be supporting our exciting musical collaboration. Find a musician on the stage map below, and click to sponsor!</p>
 
     <div class="counter">
       <div id="days"></div>
@@ -93,9 +99,20 @@
   });
 
   // bind clicks to close payment modal
-  $('#checkout .close-button').click(function() {
+  $('.close-button').click(function() {
       $('#lightbox').hide();
-      $('html, body').css('overflow', 'auto');
-      $('#checkout').hide();
+      $(this).parent().hide();
   });
+</script>
+
+<!-- Google Analytics tracking -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49390947-2', 'auto');
+  ga('send', 'pageview');
+
 </script>

@@ -63,6 +63,11 @@ var renderMusicians = function(data) {
 	var c, x, y;
 	var numSponsored = 0;
 
+	// make a conductor
+	var c = paper.rect(450,400,100,55);
+	c.attr({ fill: '#CCC', stroke: 'none' });
+
+	// make musicians
 	for (i=0; i < seatingchart.length; i++) {
 
 		x = seatingchart[i][0];
