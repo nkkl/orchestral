@@ -9,7 +9,10 @@
     <p>We are asking you, our community, to help take part in this event. For $50, you can sponsor a student or volunteer musician, and get a complimentary ticket to our concert. Here's the twist. If all musicians are sponsored by the day of the concert, the money will go to the musicians. If not, the money will go to the orchestra's general fund. Either way, you will be supporting our exciting musical collaboration. Find a musician on the stage map below, and click to sponsor!</p>
 
     <div class="counter">
-      <span id="numSponsored"></span>/65
+      <div id="days"></div>
+
+      <h1><span id="numSponsored"></span>/65</h1>
+      seats sponsored
     </div>
   </div>
 </div>
@@ -41,9 +44,11 @@
 <div id="lightbox"></div>
 
 <div id="footer">
+  
   <div class="text">
-    <h3>&copy; 2015 <a class="link" href="http://livemusicproject.org">The Live Music Project</a></h3>
-    <p>The <a class="link" href="http://seattlecollaborativeorchestra.org">Seattle Collaborative Orchestra</a> is a 501(c)3 non-profit organization. All donations are tax-deductible and are paid directly to the orchestra.</p>
+    <a href="http://livemusicproject.org" title="The Live Music Project" alt="The Live Music Project"><%= image_tag "LMP.png" %></a>
+
+    <p>&copy; 2015 The Live Music Project. The Seattle Collaborative Orchestra is a 501(c)3 non-profit organization. All donations are tax-deductible and are paid directly to the orchestra.</p>
   </div>
 </div>
 

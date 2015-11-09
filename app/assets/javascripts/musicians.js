@@ -29,9 +29,41 @@ var renderMusicians = function(data) {
 	// draw orchestra on canvas
 	var paper = Raphael('orchestra', 800, 500);
 
+	// calculate how many days are left
+	// push that information into the counter
+	var d = new Date();
+	var year = d.getFullYear();
+	var counterString = '';
+
+	if (year <= 2015) {
+		var month = d.getMonth() + 1;
+		
+		if (month <= 11) {
+			var day = d.getDate();
+
+			var daysRemaining = 18 - day;
+
+			if (daysRemaining == 1) {
+				counterString = '1 day to go!';
+			} else {
+				counterString = daysRemaining + ' days to go!';
+			}
+
+		} else {
+			counterString = 'The concert is already over.';
+		}
+	} else {
+		counterString = 'The concert is already over';
+	}
+	
+	$('.counter #days').text(counterString);
+
 	// initialize basic variables
 	// c, x, y are for SVG elements
+	// numSponsored is for our progress bar
 	var c, x, y;
+	var numSponsored = 0;
+
 	for (i=0; i < seatingchart.length; i++) {
 
 		x = seatingchart[i][0];
@@ -54,6 +86,9 @@ var renderMusicians = function(data) {
 			} else if (data[i].student == true && data[i].status == true) {
 				c = paper.circle(x,y,15).attr({ fill: sponsoredColor, stroke: 'none' });
 				c[0].id = 'seat-' + i;
+
+				// if the student is sponsored, increment the number of sponsored students
+				numSponsored++;
 			} else {
 				c = paper.circle(x,y,15).attr({ fill: unsponsorableColor, stroke: 'none' });
 				c[0].id = 'seat-' + i;
@@ -75,7 +110,7 @@ var renderMusicians = function(data) {
 			c = paper.circle(x,y,15).attr({ fill: 'black', stroke: 'none' });
 		}
 		
-
+		$('#numSponsored').text(numSponsored);
 	}
 }
 
