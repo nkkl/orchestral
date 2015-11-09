@@ -78,7 +78,7 @@ Rails.application.configure do
 
   # Braintree configurations
   Braintree::Configuration.environment = :sandbox
-  Braintree::Configuration.merchant_id = "zd89xh6nrvz4dk4m"
-  Braintree::Configuration.public_key = "jxqcxqdztbnnhtkx"
-  Braintree::Configuration.private_key = "60e5b0587fbbf844d4ec1cb7cb3a8f56"
+  Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
+  Braintree::Configuration.public_key = ENV['PUBLIC_KEY']
+  Braintree::Configuration.private_key = ENV['PRIVATE_KEY']
 end
