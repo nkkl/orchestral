@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>These are the musicians in this orchestra</h1>
+<div id="header">
+  <div class="wrapper">
+    <h1>SCO: Sponsor a Seat</h1>
+
+    <p>On November 18, we will be presenting you with an innovative concert. Our orchestra is inter-generational, a collaboration between Seattle-area high school and college students, volunteers from the community, and professionals from premier ensembles like the Seattle Symphony.</p>
+
+    <p>We are asking you, our community, to help take part in this event. For $50, you can sponsor a student or volunteer musician, and get a complimentary ticket to our concert. Here's the twist. If all musicians are sponsored by the day of the concert, the money will go to the musicians. If not, the money will go to the orchestra's general fund. Either way, you will be supporting our exciting musical collaboration. Find a musician on the stage map below, and click to sponsor!</p>
+
+    <div class="counter"></div>
+  </div>
+</div>
 
 <%= content_tag "div", id: "orchestra", data: {url: root_url} do %>
   <div class="popup"></div>
@@ -34,6 +44,9 @@
 <div id="checkout">
   <div class="close-button">&times;</div>
 
+  <div class="information">
+  </div>
+
   <form id="checkout-form" method="post" action="/checkout">
     <div id="details">
       <input type="text" name="donorname" placeholder="name">
@@ -42,7 +55,7 @@
       <label for="include">Show my name in the list of donors</label>
     </div>
     <div id="payment-form"></div>
-    <button type="submit">Donate $50</button>
+    <button type="submit">Sponsor for $50</button>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <input type="hidden" id="id-field" name="id" value="">
   </form>

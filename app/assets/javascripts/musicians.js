@@ -1,10 +1,17 @@
  // Place all the behaviors and hooks related to the matching controller here.
  // All this logic will automatically be available in application.js.
+var sponsorableColor = '#00E5E6';
+var sponsoredColor = '#B3FFFF';
+var unsponsorableColor = '#EEE';
+
 
 var launchPayments = function(data, id) {
 	var index = parseInt( id.replace('seat-','') );
 
 	if (data[index].status == false) {
+		$('#checkout .information').empty();
+		$('#checkout .information').append('<h3>Sponsor this ' + data[index].instrument + '</h3>');
+
 	    $('#checkout').show();
 
 	    // block interaction on the rest of the screen
@@ -34,7 +41,7 @@ var renderMusicians = function(data) {
 		if (data[i]) {
 			// if the seat is for a student AND not sponsored, highlight it so that it can be sponsored
 			if (data[i].student == true && data[i].status == false) {
-				c = paper.circle(x,y,15).attr({ fill: 'green', stroke: 'none' });
+				c = paper.circle(x,y,15).attr({ fill: sponsorableColor, stroke: 'none' });
 
 				// bind a unique identifier to each SVG element
 				// this avoids issues with closures
@@ -45,10 +52,10 @@ var renderMusicians = function(data) {
 					launchPayments(data, this[0].id);
 				});
 			} else if (data[i].student == true && data[i].status == true) {
-				c = paper.circle(x,y,15).attr({ fill: 'rgb(100,100,100)', stroke: 'none' });
+				c = paper.circle(x,y,15).attr({ fill: sponsoredColor, stroke: 'none' });
 				c[0].id = 'seat-' + i;
 			} else {
-				c = paper.circle(x,y,15).attr({ fill: 'black', stroke: 'none' });
+				c = paper.circle(x,y,15).attr({ fill: unsponsorableColor, stroke: 'none' });
 				c[0].id = 'seat-' + i;
 			}
 
@@ -106,7 +113,7 @@ var showMusiciansPopup = function(data, id) {
 	// then offset by half the width to center horizontally
 	// and the entire height to display above the hovered element
 	// then shift by the height of the element plus a little padding
-	var x = svg.offset().left + element.cx.animVal.value - 50;
+	var x = svg.offset().left + element.cx.animVal.value - 75;
 	var y = svg.offset().top + element.cy.animVal.value - height - 45;
 
 	// move the popup into view

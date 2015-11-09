@@ -2,14 +2,24 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$font: sans-serif;
-$primary-color: #4455BB;
-$secondary-color: #334455;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+$font: 'Open Sans', sans-serif;
+$primary-color: #00E5E6;
+$secondary-color: #00CCCC;
 $contrast-color: white;
 
 * {
 	margin: 0;
 	padding: 0;
+	
+	font-family: $font;
+	font-weight: 400;
+
+	h1, h2 {
+		font-family: $font;
+		font-weight: 300;
+	}
 }
 
 @media (max-width: 991px) {
@@ -23,6 +33,50 @@ $contrast-color: white;
 		position: relative;
 	}
 
+	#header {
+		width: 100%;
+		overflow: hidden;
+
+		background-color: #EEE;
+
+		.wrapper {
+			position: relative;
+
+			width: 992px;
+			margin: 2em auto;
+		}
+
+		h1 {
+			font-size: 36pt;
+			line-height: 100%;
+		}
+
+		h2 {
+			font-size: 36pt;
+			line-height: 100%;
+
+			margin-bottom: 10px;
+		}
+
+		p {
+			margin-top: 1em;
+
+			max-width: 740px;
+		}
+
+		.counter {
+			height: 100px;
+			width: 100px;
+
+			border: 1px solid red;
+
+			position: absolute;
+
+			right: 10px;
+			bottom: 10px;
+		}
+	}
+
 	/* orchestra */
 	#orchestra {
 		svg {
@@ -33,24 +87,30 @@ $contrast-color: white;
 
 			margin: 1em auto;
 
-			border: 1px solid black;
-
 			z-index: 1;
 		}
 
 		.popup {
 			position: absolute;
-			left: -200px;
+			left: -400px;
 			top: 0px;
 
-			width: 80px;
-			padding: 10px;
+			width: 120px;
+			padding: 5px 15px;
 
 			border: 1px solid gray;
-			background-color: rgba(0,0,0,.8);
+			background-color: rgba(0,0,0,.6);
 			color: white;
 
 			z-index: 2;
+
+			font-size: 10pt;
+
+			h3 {
+				font-size: 16pt;
+				font-weight: 300;
+				margin-bottom: 2pt;
+			}
 		}
 	}
 
@@ -73,14 +133,31 @@ $contrast-color: white;
 
 		.close-button {
 			font-size: 24pt;
-			margin: 5px -5px;
+			margin: 5px;
 
-			width: 100%;
-			text-align: right;
+			display: inline-block;
+			float: right;
 
 			&:hover {
 				cursor: pointer;
-				color: red;
+				color: $secondary-color;
+			}
+		}
+
+		.information {
+			margin-left: 1em;
+			margin-top: 5px;
+
+			display: inline-block;
+			width: 250px;
+
+			font-size: 12pt;
+
+			h3 {
+				font-size: 16pt;
+				font-weight: 300;
+
+				margin-bottom: 2pt;
 			}
 		}
 
@@ -91,14 +168,16 @@ $contrast-color: white;
 				padding: 1em 0;
 				width: 100%;
 
-				background-color: $primary-color;
+				background-color: $secondary-color;
 				color: $contrast-color;
 				border: none;
 
 				cursor: pointer;
 
+				font-size: 12pt;
+
 				&:hover {
-					background-color: $secondary-color;
+					background-color: $primary-color;
 				}
 			}
 		}
