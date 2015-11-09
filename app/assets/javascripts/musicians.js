@@ -148,7 +148,7 @@ var showMusiciansPopup = function(data, id) {
 	// and the entire height to display above the hovered element
 	// then shift by the height of the element plus a little padding
 	var x = svg.offset().left + element.cx.animVal.value - 75;
-	var y = svg.offset().top + element.cy.animVal.value - height - 45;
+	var y = svg.offset().top + element.cy.animVal.value - height - 40;
 
 	// move the popup into view
 	popup.css({'left': x, 'top': y});

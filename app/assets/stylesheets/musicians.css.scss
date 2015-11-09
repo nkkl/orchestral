@@ -92,6 +92,8 @@ a.link {
 
 	/* orchestra */
 	#orchestra {
+		min-height: 500px;
+		
 		svg {
 			display: block;
 
@@ -259,7 +261,8 @@ a.link {
 
 			p {
 				padding-top: 2pt;
-				margin-left: 130px;
+				margin-left: 150px;
+				margin-right: 130px;
 
 				font-size: 10pt;
 				color: #888;
@@ -269,6 +272,11 @@ a.link {
 				width: 120px;
 				float: left;
 			}
+
+			.socialmedia {
+				float: right;
+			}
 		}
+
 	}
 }

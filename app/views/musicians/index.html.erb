@@ -48,11 +48,31 @@
   <div class="text">
     <a href="http://livemusicproject.org" title="The Live Music Project" alt="The Live Music Project"><%= image_tag "LMP.png" %></a>
 
+    <div class="socialmedia">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Sponsor an SCO musician!" data-via="LiveMusicProj" data-related="LiveMusicProj" data-count="none" data-hashtags="SponsorASeat">Tweet</a><br/>
+      <div class="fb-share-button" data-href="https://orchestral.herokuapp.com" data-layout="button"></div>
+    </div>
+    
     <p>&copy; 2015 The Live Music Project. The Seattle Collaborative Orchestra is a 501(c)3 non-profit organization. All donations are tax-deductible and are paid directly to the orchestra.</p>
   </div>
+
 </div>
 
+<!-- Twitter share button -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<!-- Facebook share button -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
 <script type="text/javascript">
 
   // fetches client token from server
