@@ -75,16 +75,22 @@ a.link {
 
 		h1 {
 			line-height: 100%;
+			margin-bottom: 4pt;
 		}
 
 		p {
 			margin-bottom: 1em;
 		}
 
-		.counter > * {
-			display: inline;
-			font-size: 16pt;
-			font-weight: 400;
+		.counter {
+
+			line-height: 115%;
+
+			> * {
+				display: inline;
+				font-size: 16pt;
+				font-weight: 400;
+			}
 		}
 	}
 
