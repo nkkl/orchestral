@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Braintree configurations
-  Braintree::Configuration.environment = :sandbox
+  Braintree::Configuration.environment = :production
   Braintree::Configuration.merchant_id = ENV['MERCHANT_ID']
   Braintree::Configuration.public_key = ENV['PUBLIC_KEY']
   Braintree::Configuration.private_key = ENV['PRIVATE_KEY']
