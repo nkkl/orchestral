@@ -124,7 +124,7 @@ a.link {
 			font-size: 12pt;
 
 			#days {
-
+				margin-bottom: 8pt;
 			}
 		}
 	}
@@ -303,6 +303,26 @@ a.link {
 				float: right;
 			}
 		}
+	}
 
+	.copy {
+		max-width: 992px;
+		margin: auto;
+		margin-bottom: 3em;
+
+		p {
+			margin-bottom: 1em;
+		}
+	}
+
+	.return {
+		max-width: 992px;
+		margin: 1em auto;
+
+		font-size: 16pt;
+
+		a {
+			text-decoration: none;
+		}
 	}
 }

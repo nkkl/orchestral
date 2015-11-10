@@ -100,6 +100,9 @@ class MusiciansController < ApplicationController
     end
   end
 
+  def terms
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_musician

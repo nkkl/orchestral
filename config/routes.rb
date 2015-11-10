@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/client_token' => 'musicians#client_token'
 
+  get '/termsandprivacy' => 'musicians#terms'
+
   post '/checkout' => 'musicians#checkout'
 
   # Example of regular route:
