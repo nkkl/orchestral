@@ -17,8 +17,8 @@
     <div class="counter">
       <div id="days"></div>
 
-      <h1><span id="numSponsored"></span>/65</h1>
-      seats sponsored
+      <h1><span id="numSponsored"></span></h1>
+      students sponsored
     </div>
   </div>
 </div>
@@ -31,6 +31,7 @@
   <div class="close-button">&times;</div>
 
   <div class="information">
+    <h3>Test content</h3>
   </div>
 
   <form id="checkout-form" method="post" action="/checkout">
@@ -55,7 +56,7 @@
     <a href="http://livemusicproject.org" title="The Live Music Project" alt="The Live Music Project"><%= image_tag "LMP.png" %></a>
 
     <div class="socialmedia">
-      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Sponsor an SCO musician by 11/18!" data-via="LiveMusicProj" data-related="LiveMusicProj" data-count="none">Tweet</a><br/>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-text="Sponsor an SCO musician by 11/18!" data-via="LiveMusicProj" data-related="LiveMusicProj" data-count="none">Tweet</a>
       <div class="fb-share-button" data-href="https://orchestral.herokuapp.com" data-layout="button"></div>
     </div>
     
@@ -90,6 +91,11 @@
 
   var musicians = $.getJSON( $('#orchestra').data('url' + '.json'), function() { 
     renderMusicians(musicians.responseJSON);
+
+    $(window).resize( function() {
+      $('#orchestra').empty();
+      renderMusicians(musicians.responseJSON);
+    });
   });
 
   // bind clicks to open payment modal
@@ -103,6 +109,7 @@
   $('.close-button').click(function() {
       $('#lightbox').hide();
       $(this).parent().hide();
+      $('body').css('overflow', 'auto');
   });
 </script>
 
