@@ -182,6 +182,8 @@ var showMusiciansPopup = function(data, id) {
 		}
 	} else if (student == true && status == false) {
 		string += 'click to sponsor';
+	} else {
+		string += 'professional musician';
 	}
 
 	popup.append(string);
