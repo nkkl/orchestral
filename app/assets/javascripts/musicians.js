@@ -40,7 +40,7 @@ var renderMusicians = function(data) {
 		if (month <= 11) {
 			var day = d.getDate();
 
-			var daysRemaining = 18 - day;
+			var daysRemaining = 19 - day;
 
 			if (daysRemaining == 1) {
 				counterString = '1 day to go!';
